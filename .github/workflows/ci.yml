@@ -35,12 +35,6 @@ jobs:
           ruby-version: .ruby-version
           bundler-cache: true
 
-      - name: Install Node.js dependencies
-        run: npm install
-
-      - name: Debug environment
-        run: ls -R
-
       - name: Scan for security vulnerabilities in JavaScript dependencies
         run: bin/importmap audit
 
