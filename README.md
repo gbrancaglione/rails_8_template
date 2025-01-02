@@ -36,7 +36,7 @@ Ensure you have Docker and Docker Compose installed on your system.
 3. Run database migrations inside the created container:
 
    ```bash
-   docker-compose exec app rails db:migrate
+   docker-compose exec app web db:migrate
    ```
 
 4. Access the application at `http://localhost:3005`.
