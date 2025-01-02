@@ -35,53 +35,51 @@
     </div>
   </div>
 
-  <div>
-    <div class="lg:pl-72">
-      <div class="sticky top-0 z-40 flex h-16 shrink-0 items-center gap-x-4 border-b border-gray-200 bg-white px-4 shadow-sm sm:gap-x-6 sm:px-6 lg:px-8">
-        <div class="h-6 w-px bg-gray-900/10 lg:hidden" aria-hidden="true"></div>
-      </div>
-
-      <main class="py-10">
-        <div class="mx-auto max-w-7xl px-4 py-24 sm:px-6 sm:py-16 lg:px-8">
-          <%= form_with(model: @user, local: true) do |f| %>
-            <div class="space-y-12">
-              <div class="border-b border-gray-900/10 pb-12">
-                <h2 class="text-base/7 font-semibold text-gray-900">Personal Information</h2>
-                <p class="mt-1 text-sm/6 text-gray-600">Use a permanent address where you can receive mail.</p>
-
-                <div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
-                  <div class="sm:col-span-4">
-                    <%= f.label :email_address, "Email address", class: "block text-sm/6 font-medium text-gray-900" %>
-                    <div class="mt-2">
-                      <%= f.email_field :email_address, id: "email", class: "block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6" %>
-                    </div>
-                  </div>
-
-                  <div class="sm:col-span-3">
-                    <%= f.label :password, "Password", class: "block text-sm/6 font-medium text-gray-900" %>
-                    <div class="mt-2">
-                      <%= f.password_field :password, id: "password", class: "block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6" %>
-                    </div>
-                  </div>
-
-                  <div class="sm:col-span-3">
-                    <%= f.label :password_confirmation, "Confirm Password", class: "block text-sm/6 font-medium text-gray-900" %>
-                    <div class="mt-2">
-                      <%= f.password_field :password_confirmation, id: "password_confirmation", class: "block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6" %>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="mt-6 flex items-center justify-end gap-x-6">
-              <%= link_to "Cancel", users_path, class: "text-sm/6 font-semibold text-gray-900" %>
-              <%= f.submit "Save", class: "rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600" %>
-            </div>
-          <% end %>
-        </div>
-      </main>
+  <div class="lg:pl-72">
+    <div class="sticky top-0 z-40 flex h-16 shrink-0 items-center gap-x-4 border-b border-gray-200 bg-white px-4 shadow-sm sm:gap-x-6 sm:px-6 lg:px-8">
+      <div class="h-6 w-px bg-gray-900/10 lg:hidden" aria-hidden="true"></div>
     </div>
-  </div>
 
+    <main class="py-10">
+      <div class="px-4 sm:px-6 lg:px-8">
+        <div class="sm:flex sm:items-center">
+          <div class="sm:flex-auto">
+            <h1 class="text-base font-semibold text-gray-900">Users</h1>
+            <p class="mt-2 text-sm text-gray-700">A list of all the users in your account including their name, title, email and role.</p>
+          </div>
+          <div class="mt-4 sm:ml-16 sm:mt-0 sm:flex-none">
+            <%= link_to "Add user", new_backoffice_user_path, class: "block rounded-md bg-indigo-600 px-3 py-2 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600" %>
+          </div>
+        </div>
+        <div class="mt-8 flow-root">
+          <div class="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
+            <div class="inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8">
+              <table class="min-w-full divide-y divide-gray-300">
+                <thead>
+                <tr>
+                  <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Email</th>
+                  <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Created At</th>
+                  <th scope="col" class="relative py-3.5 pl-3 pr-4 sm:pr-0">
+                    <span class="sr-only">Edit</span>
+                  </th>
+                </tr>
+                </thead>
+                <tbody class="divide-y divide-gray-200">
+                  <% @users.each do |user| %>
+                    <tr>
+                      <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500"><%= user.email_address %></td>
+                      <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500"><%= user.created_at %></td>
+                      <td class="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-0">
+                        <a href="#" class="text-indigo-600 hover:text-indigo-900">Edit<span class="sr-only">, Lindsay Walton</span></a>
+                      </td>
+                    </tr>
+                  <% end %>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
 </div>
