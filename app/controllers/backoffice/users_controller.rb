@@ -43,7 +43,7 @@ module Backoffice
     # DELETE /users/:id
     def destroy
       @user.destroy
-      redirect_to users_url, notice: "User was successfully deleted."
+      redirect_to backoffice_users_path, notice: "User was successfully deleted."
     end
 
     private
