@@ -49,6 +49,14 @@ group :development, :test do
   # Static analysis for security vulnerabilities [https://brakemanscanner.org/]
   gem "brakeman", require: false
 
+  # For creating random stuff
+  gem "factory_bot", "~> 6.5"
+  gem "faker"
+  gem "shoulda-matchers", "~> 6.0"
+
+  # Testing framework
+  gem "rspec-rails", "~> 7.0.0"
+
   # Omakase Ruby styling [https://github.com/rails/rubocop-rails-omakase/]
   gem "rubocop-rails-omakase", require: false
 end
