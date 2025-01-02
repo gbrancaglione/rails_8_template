@@ -1,5 +1,5 @@
 <main class="py-10">
-  <div class="px-4 sm:px-6 lg:px-8">
+  <div class="mx-auto max-w-7xl px-4 py-24 sm:px-6 sm:py-16 lg:px-8">
     <div class="sm:flex sm:items-center">
       <div class="sm:flex-auto">
         <h1 class="text-base font-semibold text-gray-900">Users</h1>
@@ -23,15 +23,15 @@
             </tr>
             </thead>
             <tbody class="divide-y divide-gray-200">
-            <% @users.each do |user| %>
-              <tr>
-                <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500"><%= user.email_address %></td>
-                <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500"><%= user.created_at %></td>
-                <td class="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-0">
-                  <a href="#" class="text-indigo-600 hover:text-indigo-900">Edit<span class="sr-only">, Lindsay Walton</span></a>
-                </td>
-              </tr>
-            <% end %>
+              <% @users.each do |user| %>
+                <tr>
+                  <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500"><%= user.email_address %></td>
+                  <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500"><%= user.created_at %></td>
+                  <td class="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-0">
+                    <a href="<%= edit_backoffice_user_path(user) %>" class="text-indigo-600 hover:text-indigo-900">Edit<span class="sr-only">, <%= user.email_address %></span></a>
+                  </td>
+                </tr>
+              <% end %>
             </tbody>
           </table>
         </div>

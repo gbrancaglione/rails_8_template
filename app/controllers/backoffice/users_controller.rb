@@ -1,5 +1,7 @@
 module Backoffice
   class UsersController < ApplicationController
+    before_action :set_user, only: [ :show, :edit, :destroy, :update ]
+
     # GET /users
     def index
       @users = User.all
@@ -32,7 +34,7 @@ module Backoffice
     # PATCH/PUT /users/:id
     def update
       if @user.update(user_params)
-        redirect_to @user, notice: "User was successfully updated."
+        redirect_to backoffice_users_path, notice: "User was successfully updated."
       else
         render :edit, status: :unprocessable_entity
       end
